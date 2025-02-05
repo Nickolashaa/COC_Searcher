@@ -2,7 +2,7 @@ from PyQt6.QtWidgets import QApplication, QMainWindow, QMessageBox
 from PyQt6.QtGui import QIcon
 from PyQt6 import uic
 import sys
-from app.parsing import parsing
+from app.parsing import parsing, ScreenReader
 import threading
 
 
@@ -17,6 +17,7 @@ class Searcher(QMainWindow):
         self.dark_elixir_input.setText('0')
         self.stop_event = None
         self.thread = None
+        self.reader = ScreenReader()
 
     def parse(self):
         if self.activated:
@@ -30,21 +31,26 @@ class Searcher(QMainWindow):
             try:
                 gold = int(self.gold_input.text().replace(' ', ''))
                 elixir = int(self.elixir_input.text().replace(' ', ''))
-                dark_elixir = int(
-                    self.dark_elixir_input.text().replace(' ', ''))
+                dark_elixir = int(self.dark_elixir_input.text().replace(' ', ''))
             except ValueError:
                 msg = QMessageBox()
                 msg.setWindowTitle("Ошибка")
                 msg.setText("Вводите только цифры")
                 msg.exec()
                 return
+
             self.btn.setText('Стоп')
             self.update()
             self.activated = True
-            self.stop_event = threading.Event()
+
+            if self.thread and self.thread.is_alive():
+                self.thread.join()  # Дождемся завершения старого потока
+
+            self.stop_event = threading.Event()  # Создаем новый флаг
             self.thread = threading.Thread(
                 target=parsing, args=(gold, elixir, dark_elixir, self))
             self.thread.start()
+
 
 
 if __name__ == '__main__':
