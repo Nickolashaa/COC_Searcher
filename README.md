@@ -29,11 +29,11 @@
 ---
 
 ## 💾 Установка  
-
+Действия могут выполняться достаточно медленно, пожалуйста дождитесь их окончания
 ```bash
 git clone https://github.com/Nickolashaa/COC_Searcher.git
 cd COC_Searcher
-pip install -r requirements.txt
+pip install -r ./requirements.txt
 python main.py
 ```
 
