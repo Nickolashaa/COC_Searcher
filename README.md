@@ -40,10 +40,10 @@ pip install -r requirements.txt
 # (Опционально) Ускорение работы через GPU
 # Установите, если у вас есть совместимая видеокарта
 # Для Windows:
-pip install paddlepaddle-gpu==2.5.0 paddleocr -f https://www.paddlepaddle.org.cn/whl/windows/mkl/avx/stable.html
+pip install paddlepaddle-gpu==2.6.2 paddleocr -f https://www.paddlepaddle.org.cn/whl/windows/mkl/avx/stable.html
 
 # Для Linux:
-pip install paddlepaddle-gpu==2.5.0 paddleocr -f https://www.paddlepaddle.org.cn/whl/linux/mkl/avx/stable.html
+pip install paddlepaddle-gpu==2.6.2 paddleocr -f https://www.paddlepaddle.org.cn/whl/linux/mkl/avx/stable.html
 
 # Запуск программы
 python main.py
