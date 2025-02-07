@@ -26,9 +26,16 @@
 
 ---
 
+## 💾 Быстрая установка  
+# 1. Скачиваем репозиторий
+# 2. Активируем install.bat
+# 3. Включили Clash Of Clans
+# 4. Активируем main.py
+
+---
+
 ## 💾 Установка  
 > ⚠️ Действия могут выполняться медленно, дождитесь их завершения!
-Действия могут выполняться достаточно медленно, пожалуйста дождитесь их окончания
 ```bash
 # Клонируем репозиторий
 git clone https://github.com/Nickolashaa/COC_Searcher.git
@@ -40,10 +47,12 @@ pip install -r requirements.txt
 # (Опционально) Ускорение работы через GPU
 # Установите, если у вас есть совместимая видеокарта
 # Для Windows:
-pip install paddlepaddle-gpu==2.5.0 paddleocr -f https://www.paddlepaddle.org.cn/whl/windows/mkl/avx/stable.html
+pip install paddlepaddle-gpu==2.6.2 paddleocr -f https://www.paddlepaddle.org.cn/whl/windows/mkl/avx/stable.html
 
 # Для Linux:
-pip install paddlepaddle-gpu==2.5.0 paddleocr -f https://www.paddlepaddle.org.cn/whl/linux/mkl/avx/stable.html
+pip install paddlepaddle-gpu==2.6.2 paddleocr -f https://www.paddlepaddle.org.cn/whl/linux/mkl/avx/stable.html
+
+# Включили Clash Of Clans
 
 # Запуск программы
 python main.py
