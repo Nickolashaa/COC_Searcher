@@ -43,18 +43,13 @@ set /p use_gpu=
 if /i "%use_gpu%"=="y" (
     echo [96m3/4 Устанавливаю поддержку GPU...
     if "%OS_NAME%"=="Windows" (
-        pip install paddlepaddle-gpu==2.5.0 paddleocr -f https://www.paddlepaddle.org.cn/whl/windows/mkl/avx/stable.html
+        pip install paddlepaddle-gpu==2.6.2 paddleocr -f https://www.paddlepaddle.org.cn/whl/windows/mkl/avx/stable.html
     ) else (
-        pip install paddlepaddle-gpu==2.5.0 paddleocr -f https://www.paddlepaddle.org.cn/whl/linux/mkl/avx/stable.html
+        pip install paddlepaddle-gpu==2.6.2 paddleocr -f https://www.paddlepaddle.org.cn/whl/linux/mkl/avx/stable.html
     )
 ) else (
     echo [93mПропускаю установку GPU.
 )
 
-echo [92m4/4 Установка завершена! Запускайте программу внутри виртуального окружения.
-echo Чтобы активировать окружение, используйте:
-echo call venv\Scripts\activate
-echo Для запуска программы выполните:
-echo python main.py
-echo.
+echo [92m4/4 Установка завершена!
 pause
