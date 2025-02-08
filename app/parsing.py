@@ -5,6 +5,7 @@ import time
 import os
 from paddleocr import PaddleOCR
 
+
 class ScreenReader:
     def __init__(self):
         os.system("cd platform-tools && adb connect 127.0.0.1:5555")
