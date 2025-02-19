@@ -2,14 +2,14 @@ from PyQt6.QtWidgets import QApplication, QMainWindow, QMessageBox
 from PyQt6.QtGui import QIcon
 from PyQt6 import uic
 import sys
-from app.parsing import parsing, ScreenReader
+from app.parsing import parsing, ScreenReader, resource_path
 import threading
 
 
 class Searcher(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('app/ui/searcher.ui', self)
+        uic.loadUi(resource_path('app\\ui\\searcher.ui'), self)
         self.btn.clicked.connect(self.parse)
         self.activated = False
         self.gold_input.setText('0')
@@ -55,7 +55,7 @@ class Searcher(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    app.setWindowIcon(QIcon('app/ui/pic/favicon.ico'))
+    app.setWindowIcon(QIcon(resource_path('app\\ui\\pic\\favicon.ico')))
     searcher = Searcher()
     searcher.show()
     sys.exit(app.exec())
