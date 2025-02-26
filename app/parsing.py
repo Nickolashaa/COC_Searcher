@@ -5,6 +5,7 @@ import time
 import os
 import sys
 from paddleocr import PaddleOCR
+import json
 
 
 def resource_path(relative_path):
@@ -73,7 +74,13 @@ class ScreenReader:
 
 
 def parsing(gold, elixir, dark_elixir, main_self):
-    print('Начинаю парсинг')
+    with open('saved_data.json', 'w') as f:
+        data = {
+            "gold": gold,
+            "elixir": elixir,
+            "dark_elixir": dark_elixir
+        }
+        json.dump(data, f)
     while not main_self.stop_event.is_set():
         main_self.reader.screen(
             region=(80, 120, 230, 255),
@@ -82,12 +89,10 @@ def parsing(gold, elixir, dark_elixir, main_self):
                    resource_path('app\\parse_pic\\elixir.png'),
                    resource_path('app\\parse_pic\\dark_elixir.png')]
         )
-        print(1)
         current_gold = main_self.reader.read('app\\parse_pic\\gold.png')
         current_elixir = main_self.reader.read('app\\parse_pic\\elixir.png')
         current_dark_elixir = main_self.reader.read('app\\parse_pic\\dark_elixir.png')
 
-        print(2)
         if not current_gold or not current_elixir or not current_dark_elixir:
             time.sleep(2.5)
             continue

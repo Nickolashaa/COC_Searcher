@@ -4,6 +4,7 @@ from PyQt6 import uic
 import sys
 from app.parsing import parsing, ScreenReader, resource_path
 import threading
+import json
 
 
 class Searcher(QMainWindow):
@@ -18,6 +19,11 @@ class Searcher(QMainWindow):
         self.stop_event = None
         self.thread = None
         self.reader = ScreenReader()
+        with open('saved_data.json', 'r') as f:
+            data = json.load(f)
+        self.gold_input.setText(str(data["gold"]))
+        self.elixir_input.setText(str(data["elixir"]))
+        self.dark_elixir_input.setText(str(data["dark_elixir"]))
 
     def parse(self):
         if self.activated:
